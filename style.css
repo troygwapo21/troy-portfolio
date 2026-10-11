@@ -496,14 +496,23 @@ body {
 }
 
 .chip-icon {
-  font-size: 1.35rem;
-  background: var(--baby-blue-100);
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.chip-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.18);
+  display: block;
 }
 
 .chip-top {
