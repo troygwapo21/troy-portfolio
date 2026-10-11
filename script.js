@@ -14,6 +14,22 @@ let adminToken = sessionStorage.getItem('troy_admin_token') || null;
 let scrollObserver = null;
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Maintain exact desktop side-by-side structure on mobile / narrow viewports
+  const applyDesktopScale = () => {
+    if (document.body.classList.contains('is-admin-domain')) {
+      document.body.style.zoom = '1';
+      return;
+    }
+    const vw = document.documentElement.clientWidth || window.innerWidth;
+    if (vw < 1200) {
+      document.body.style.zoom = String(vw / 1220);
+    } else {
+      document.body.style.zoom = '1';
+    }
+  };
+  applyDesktopScale();
+  window.addEventListener('resize', applyDesktopScale, { passive: true });
+
   // 1. Set current year in footer
   const yearEl = document.getElementById('year');
   if (yearEl) {
