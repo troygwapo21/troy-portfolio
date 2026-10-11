@@ -329,7 +329,6 @@
           <button class="filter-btn" data-filter="video">🎬 Video Editing</button>
           <button class="filter-btn" data-filter="affiliate">🛒 Affiliate</button>
           <button class="filter-btn" data-filter="vibecode">⚡ Vibe Coding</button>
-          <button class="filter-btn admin-trigger-btn" id="openAdminBtnTop" type="button">🔒 Manage Videos (Admin)</button>
         </div>
 
         <!-- Projects Grid (Dynamically loaded from GitHub Cloud / data/projects.json) -->
@@ -526,7 +525,6 @@
       </div>
       <div class="footer-right">
         <p class="footer-copy">© <span id="year"></span> Troy P. Villaruel. Crafted with clean Baby Blue &amp; White vibes.</p>
-        <button class="footer-admin-btn" id="openAdminBtnFooter" type="button">🔒 Admin</button>
       </div>
     </div>
   </footer>
@@ -551,18 +549,18 @@
     </div>
   </div>
 
-  <!-- ================= ADMIN PANEL MODAL (LOGIN + VIDEO MANAGER) ================= -->
+  <!-- ================= ADMIN PANEL PORTAL (troy-portfolio-admin.vercel.app) ================= -->
   <div class="modal-backdrop hidden" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle">
     <div class="modal-card admin-modal-card">
       <div class="modal-header">
         <div>
-          <span class="section-tag">CREATOR STUDIO</span>
+          <span class="section-tag">CREATOR STUDIO • ADMIN PORTAL</span>
           <h3 id="adminModalTitle">🔒 Troy's Video &amp; Portfolio Admin</h3>
         </div>
         <div class="admin-header-actions">
+          <a href="https://troy-portfolio-sigma.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-xs">🌐 View Public Site ↗</a>
           <button class="btn btn-secondary btn-xs hidden" id="adminChangePassBtn" type="button">🔑 Change Password</button>
           <button class="btn btn-secondary btn-xs hidden" id="adminLogoutBtn" type="button">Logout</button>
-          <button class="modal-close" id="closeAdminModal" aria-label="Close Admin">✕</button>
         </div>
       </div>
 

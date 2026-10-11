@@ -102,7 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initVideoModal();
   initAdminPanel();
 
-  if (window.location.hash === '#admin') {
+  const isAdminHost =
+    window.location.hostname.includes('troy-portfolio-admin') ||
+    window.location.hash === '#admin';
+
+  if (isAdminHost) {
+    document.body.classList.add('is-admin-domain');
+    document.title = 'Troy P. Villaruel | Admin Studio';
     openAdminModal();
   }
 });
