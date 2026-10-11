@@ -1,0 +1,68 @@
+[
+  {
+    "id": "proj-1",
+    "title": "High-Retention Reels & TikTok Edits",
+    "category": "video",
+    "badge": "Video Editing",
+    "description": "Fast-paced short-form video edits featuring animated captions, zoom transitions, and crisp sound design for maximum viewer retention.",
+    "tags": ["Short-Form", "Dynamic Captions", "SFX"],
+    "videoUrl": "",
+    "externalUrl": "",
+    "createdAt": "2026-10-11T14:00:00Z"
+  },
+  {
+    "id": "proj-2",
+    "title": "Viral Product Review & Showcase Series",
+    "category": "affiliate",
+    "badge": "Affiliate Campaign",
+    "description": "Short-form affiliate videos with strong 3-second hooks, honest demos, and clear calls-to-action that convert viewers into buyers.",
+    "tags": ["TikTok Affiliate", "UGC Style", "Product Hook"],
+    "videoUrl": "",
+    "externalUrl": "",
+    "createdAt": "2026-10-11T14:01:00Z"
+  },
+  {
+    "id": "proj-3",
+    "title": "Personal Portfolio & Creator Hub",
+    "category": "vibecode",
+    "badge": "Vibe Coding",
+    "description": "A clean baby-blue and white personal website engineered with smooth scroll fade-in animations and responsive glassmorphism UI.",
+    "tags": ["HTML5 / CSS3", "Smooth Scroll", "Responsive"],
+    "videoUrl": "",
+    "externalUrl": "https://troy-portfolio-sigma.vercel.app",
+    "createdAt": "2026-10-11T14:02:00Z"
+  },
+  {
+    "id": "proj-4",
+    "title": "Cinematic Vlog & Story Highlights",
+    "category": "video",
+    "badge": "Video Editing",
+    "description": "Smooth color-graded lifestyle and highlight edits synced to beat drops for Facebook Reels, Instagram, and TikTok.",
+    "tags": ["Beat Sync", "Color Grading", "Storytelling"],
+    "videoUrl": "",
+    "externalUrl": "",
+    "createdAt": "2026-10-11T14:03:00Z"
+  },
+  {
+    "id": "proj-5",
+    "title": "Tech & Daily Essentials Affiliate Picks",
+    "category": "affiliate",
+    "badge": "Affiliate Campaign",
+    "description": "Curated product recommendations combining clean video editing with persuasive problem-solution scripting.",
+    "tags": ["Product Demo", "Social Proof", "High CTR"],
+    "videoUrl": "",
+    "externalUrl": "",
+    "createdAt": "2026-10-11T14:04:00Z"
+  },
+  {
+    "id": "proj-6",
+    "title": "Smart Link-in-Bio & Affiliate Landing Page",
+    "category": "vibecode",
+    "badge": "Vibe Coding",
+    "description": "Custom-built fast landing page designed to showcase top affiliate products and social links with zero lag.",
+    "tags": ["Vibe Coded", "Clean UI", "Fast Load"],
+    "videoUrl": "",
+    "externalUrl": "",
+    "createdAt": "2026-10-11T14:05:00Z"
+  }
+]

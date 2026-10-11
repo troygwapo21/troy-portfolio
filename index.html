@@ -329,9 +329,10 @@
           <button class="filter-btn" data-filter="video">🎬 Video Editing</button>
           <button class="filter-btn" data-filter="affiliate">🛒 Affiliate</button>
           <button class="filter-btn" data-filter="vibecode">⚡ Vibe Coding</button>
+          <button class="filter-btn admin-trigger-btn" id="openAdminBtnTop" type="button">🔒 Manage Videos (Admin)</button>
         </div>
 
-        <!-- Projects Grid -->
+        <!-- Projects Grid (Dynamically loaded from GitHub Cloud / data/projects.json) -->
         <div class="projects-grid" id="projectsGrid">
           <!-- Project 1: Video Editing -->
           <article class="project-card fade-in" data-category="video" style="--delay: 0.1s;">
@@ -466,7 +467,6 @@
           </div>
 
           <!-- Social Media Cards: Facebook, TikTok, Instagram -->
-          <!-- TIP: Ilisi lang ang href="#" sang imo matuod nga profile links! -->
           <div class="social-grid">
             <!-- Facebook -->
             <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-card social-fb fade-in" style="--delay: 0.1s;">
@@ -524,9 +524,155 @@
         <span class="logo-mark">TV</span>
         <span><strong>Troy P. Villaruel</strong> • Video Editor • Affiliate • Vibe Coder</span>
       </div>
-      <p class="footer-copy">© <span id="year"></span> Troy P. Villaruel. Crafted with clean Baby Blue &amp; White vibes.</p>
+      <div class="footer-right">
+        <p class="footer-copy">© <span id="year"></span> Troy P. Villaruel. Crafted with clean Baby Blue &amp; White vibes.</p>
+        <button class="footer-admin-btn" id="openAdminBtnFooter" type="button">🔒 Admin</button>
+      </div>
     </div>
   </footer>
+
+  <!-- ================= CINEMA VIDEO PLAYER MODAL ================= -->
+  <div class="modal-backdrop hidden" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+    <div class="modal-card video-modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="section-tag" id="videoModalBadge">Video Editing</span>
+          <h3 id="videoModalTitle">Project Video</h3>
+        </div>
+        <button class="modal-close" id="closeVideoModal" aria-label="Close Video">✕</button>
+      </div>
+      <div class="video-player-container" id="videoPlayerContainer"></div>
+      <div class="video-modal-footer">
+        <p id="videoModalDesc"></p>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm hidden" id="videoModalExternalBtn">
+          🛒 Open Product / External Link →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ADMIN PANEL MODAL (LOGIN + VIDEO MANAGER) ================= -->
+  <div class="modal-backdrop hidden" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle">
+    <div class="modal-card admin-modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="section-tag">CREATOR STUDIO</span>
+          <h3 id="adminModalTitle">🔒 Troy's Video &amp; Portfolio Admin</h3>
+        </div>
+        <div class="admin-header-actions">
+          <button class="btn btn-secondary btn-xs hidden" id="adminChangePassBtn" type="button">🔑 Change Password</button>
+          <button class="btn btn-secondary btn-xs hidden" id="adminLogoutBtn" type="button">Logout</button>
+          <button class="modal-close" id="closeAdminModal" aria-label="Close Admin">✕</button>
+        </div>
+      </div>
+
+      <!-- STEP 1: ADMIN LOGIN VIEW -->
+      <div class="admin-login-view" id="adminLoginView">
+        <div class="admin-login-box">
+          <div class="admin-lock-icon">🔐</div>
+          <h4>Admin Access Required</h4>
+          <p>Enter your admin password to upload videos, edit projects, and publish changes live online.</p>
+          <form id="adminLoginForm">
+            <input type="password" id="adminPasswordInput" class="admin-input" placeholder="Enter Admin Password..." required autocomplete="current-password" />
+            <div class="admin-error hidden" id="adminLoginError"></div>
+            <button type="submit" class="btn btn-primary admin-submit-btn" id="adminLoginBtn">
+              Unlock Admin Dashboard →
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- STEP 2: ADMIN DASHBOARD VIEW -->
+      <div class="admin-dashboard-view hidden" id="adminDashboardView">
+        <div class="admin-grid">
+          <!-- Left Column: Upload / Add / Edit Form -->
+          <div class="admin-form-panel">
+            <div class="admin-panel-title">
+              <h4 id="adminFormHeading">➕ Upload New Video / Project</h4>
+              <button type="button" class="btn-reset hidden" id="cancelEditBtn">Cancel Edit</button>
+            </div>
+
+            <form id="projectForm">
+              <input type="hidden" id="editProjectId" value="" />
+
+              <label class="admin-label">Title *</label>
+              <input type="text" id="projTitle" class="admin-input" placeholder="e.g. Viral TikTok Product Edit" required />
+
+              <div class="admin-row-2">
+                <div>
+                  <label class="admin-label">Category *</label>
+                  <select id="projCategory" class="admin-input" required>
+                    <option value="video">🎬 Video Editing</option>
+                    <option value="affiliate">🛒 Affiliate</option>
+                    <option value="vibecode">⚡ Vibe Coding</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="admin-label">Badge Label</label>
+                  <input type="text" id="projBadge" class="admin-input" placeholder="e.g. Video Editing" />
+                </div>
+              </div>
+
+              <!-- Video Source Picker -->
+              <label class="admin-label">Video Source (Upload File or Paste Link)</label>
+              <div class="upload-box">
+                <div class="upload-file-row">
+                  <label for="projVideoFile" class="file-upload-btn">
+                    📁 Choose Video File (.mp4 / .mov / .webm)
+                  </label>
+                  <input type="file" id="projVideoFile" accept="video/mp4,video/webm,video/quicktime,video/*" class="hidden-file-input" />
+                  <span class="file-name-label" id="selectedFileName">No file chosen</span>
+                </div>
+
+                <!-- Upload Progress Bar -->
+                <div class="upload-progress-wrap hidden" id="uploadProgressWrap">
+                  <div class="upload-progress-info">
+                    <span id="uploadStatusText">Uploading video to cloud...</span>
+                    <span id="uploadPercentText">0%</span>
+                  </div>
+                  <div class="upload-progress-track">
+                    <div class="upload-progress-fill" id="uploadProgressFill"></div>
+                  </div>
+                </div>
+
+                <div class="upload-divider"><span>OR PASTE VIDEO URL / LINK</span></div>
+                <input type="url" id="projVideoUrl" class="admin-input" placeholder="https://... (Uploaded video URL, YouTube, TikTok, Reels, or Drive link)" />
+              </div>
+
+              <label class="admin-label">Description *</label>
+              <textarea id="projDesc" class="admin-input admin-textarea" rows="3" placeholder="Describe the video edit, affiliate product hook, or project details..." required></textarea>
+
+              <div class="admin-row-2">
+                <div>
+                  <label class="admin-label">Tags (comma separated)</label>
+                  <input type="text" id="projTags" class="admin-input" placeholder="Short-Form, CapCut Pro, SFX" />
+                </div>
+                <div>
+                  <label class="admin-label">Affiliate / External Link (Optional)</label>
+                  <input type="url" id="projExternalUrl" class="admin-input" placeholder="https://..." />
+                </div>
+              </div>
+
+              <div class="admin-status-msg hidden" id="adminSaveStatus"></div>
+
+              <button type="submit" class="btn btn-primary admin-submit-btn" id="saveProjectBtn">
+                🚀 Save &amp; Publish Online
+              </button>
+            </form>
+          </div>
+
+          <!-- Right Column: Existing Videos & Projects List -->
+          <div class="admin-list-panel">
+            <div class="admin-panel-title">
+              <h4>📋 Live Videos &amp; Projects (<span id="adminProjectCount">0</span>)</h4>
+              <span class="cloud-sync-pill">☁️ Live Online Sync</span>
+            </div>
+            <div class="admin-projects-list" id="adminProjectsList"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Script -->
   <script src="script.js"></script>
