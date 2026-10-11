@@ -1114,14 +1114,56 @@ body {
     padding: 40px 22px;
   }
 
-  .floating-chip {
-    position: static;
-    margin-top: 10px;
-    width: 100%;
+  .profile-card {
+    padding: 24px 14px;
   }
 
   .profile-avatar-wrapper {
-    flex-direction: column;
+    min-height: 290px;
+  }
+
+  .avatar-placeholder {
+    width: 175px;
+    height: 175px;
+  }
+
+  .avatar-initials {
+    font-size: 2.5rem;
+  }
+
+  .floating-chip {
+    padding: 8px 12px;
+    gap: 8px;
+    border-radius: 14px;
+  }
+
+  .chip-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .floating-chip strong {
+    font-size: 0.78rem;
+  }
+
+  .floating-chip small {
+    font-size: 0.68rem;
+  }
+
+  .chip-top {
+    top: 2px;
+    left: 0;
+  }
+
+  .chip-mid {
+    bottom: 58px;
+    right: 0;
+  }
+
+  .chip-bottom {
+    bottom: 0;
+    left: 4px;
   }
 }
 
